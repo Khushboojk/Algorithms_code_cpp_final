@@ -3,6 +3,9 @@ using namespace std;
  
  
 int main() {
+
+	// enter number of matrix to be multplied and its to be stored in order[], where order of matrix Ai  
+	//	will be equal to order[i-1] x order[i]
 	int n;
 	cin>>n;
 	int order[n+1];
@@ -10,6 +13,11 @@ int main() {
 	{
 		cin>>order[i];
 	}
+
+	//here optmlmltplctn[i][j] represent optimal scalar multiplication 
+	//required to multiply matrices from Ai to Aj and soln[i][j] represent optimal split 
+	//position between matrices from Ai to Aj
+	
 	int optmlmltplctn[n+1][n+1];
 	int soln[n+1][n+1];
 	for(int i=0; i<=n; i++)
@@ -27,6 +35,9 @@ int main() {
 			soln[i][j]=0;
 		}
 	}
+
+	// calculation of optimal scalar multiplication and split position
+
 	for(int i=n-1; i>=1; i--)
 	{
 		for(int j=i+1; j<=n; j++)
@@ -44,6 +55,9 @@ int main() {
 			}
 		}
 	}
+
+	// print optimal scalar multiplication matrix
+
 	for(int i=0; i<=n; i++)
 	{
 		for(int j=0; j<=n; j++)
@@ -52,6 +66,8 @@ int main() {
 		}
 		cout<<endl;
 	}
+
+	// print split position matrix
 	for(int i=0; i<=n; i++)
 	{
 		for(int j=0; j<=n; j++)
@@ -61,6 +77,6 @@ int main() {
 		cout<<endl;
 	}
  
-	// your code goes here
+	
 	return 0;
 }
